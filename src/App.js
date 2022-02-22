@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import Cabecera from './components/Cabecera';
+import Cuerpo from './components/Cuerpo';
 
 function App() {
+  var nombres = ['Jose', 'David', 'Juan'];
+
+  var nombre = 'German';
+
+  var titulo = 'Ejercicio';
+
+  const [datos, setDatos] = useState({titulo:titulo, nombres:nombres})
+
+  const anadenombre = (nombre)=>{
+    datos.nombres.push(nombre)
+    setDatos({
+      titulo:titulo,
+      nombres:[...datos.nombres]
+    })
+  }
+
+  const cambiatitulo = (titulo)=>{
+    datos.titulo = titulo
+    setDatos({
+      titulo:datos.titulo,
+      nombres:nombres
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Cabecera titulo={datos.titulo} />
+      <Cuerpo nombres={datos.nombres} add={anadenombre} change={cambiatitulo}/>
     </div>
   );
 }
