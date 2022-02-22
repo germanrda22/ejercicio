@@ -6,8 +6,6 @@ import Cuerpo from './components/Cuerpo';
 function App() {
   var nombres = ['Jose', 'David', 'Juan'];
 
-  var nombre = 'German';
-
   var titulo = 'Ejercicio';
 
   const [datos, setDatos] = useState({titulo:titulo, nombres:nombres})
